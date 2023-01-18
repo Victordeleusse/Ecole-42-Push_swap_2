@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:15:27 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/17 20:02:57 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:45:02 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_operation(t_stack_list **stack_a, t_stack_list **stack_b, \
 	t_instruction_list *instruction_list, int argc)
 {
 	t_stack_list	*begin_a;
-	t_stack_list	*heaviest;
+	t_stack_list	*begin_b;
 
 	if (argc - 1 <= 5)
 		ft_sort_5(stack_a, stack_b, &instruction_list);
@@ -44,15 +44,21 @@ void	ft_operation(t_stack_list **stack_a, t_stack_list **stack_b, \
 	}
 	else if (argc - 1 <= 100)
 	{
-		ft_init_exit_weight(stack_a);
+		ft_send_from_a_to_b(stack_a, stack_b, &instruction_list);
 		begin_a = *stack_a;
+		begin_b = *stack_b;
+		printf("\nSTACK A\n");
 		while(begin_a)
 		{
-			printf("indice : %d -> poids : %d\n", begin_a->index_sorted, begin_a->exit_weight);
+			printf("indice : %d -> poids : %d || already sort ? : %d\n", begin_a->index_sorted, begin_a->exit_weight, begin_a->is_already_sort);
 			begin_a = begin_a->next;
 		}
-		heaviest = ft_get_heaviest_elem(stack_a);
-		printf("\nindice : %d -> poids : %d\n", heaviest->index_sorted, heaviest->exit_weight);	
+		printf("\nSTACK B\n");
+		while(begin_b)
+		{
+			printf("indice : %d -> poids : %d || already sort ? : %d\n", begin_b->index_sorted, begin_b->exit_weight, begin_b->is_already_sort);
+			begin_b = begin_b->next;
+		}
 	}
 }
 
@@ -75,7 +81,7 @@ int	main(int argc, char **argv)
 	if (!instruction_list)
 		return (0);
 	ft_operation(stack_a, stack_b, instruction_list, argc);
-	ft_opti_display(instruction_list);
-	ft_free(stack_a, stack_b, instruction_list, tab);
+	// ft_opti_display(instruction_list);
+	// ft_free(stack_a, stack_b, instruction_list, tab);
 	return (0);
 }
