@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:15:27 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/19 21:37:45 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:45:23 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,8 @@ void	ft_opti_display(t_instruction_list *instruction_list)
 void	ft_operation(t_stack_list **stack_a, t_stack_list **stack_b, \
 	t_instruction_list *instruction_list, int argc)
 {
-	// t_stack_list	*begin_a;
-	
 	if (argc - 1 <= 5)
-	{
 		ft_sort_5(stack_a, stack_b, &instruction_list);
-		// begin_a = *stack_a;
-		// while (begin_a)
-		// {
-		// 	printf("indice : %d\n", begin_a->data);
-		// 	begin_a = begin_a->next;
-		// }
-	}
 	else if (argc - 1 <= 10)
 	{
 		ft_separate_stack(stack_a, stack_b, argc - 1, &instruction_list);
