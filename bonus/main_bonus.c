@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:09:41 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/16 15:04:33 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:43:52 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	ft_operation_bonus_swap_push_rev(t_instruction_list *begin, \
 		ft_swap_a(stack_a, &instruction_lst_annexe);
 	else if (begin->instruction[0] == 's' && begin->instruction[1] == 'b')
 		ft_swap_b(stack_b, &instruction_lst_annexe);
+	else if (begin->instruction[0] == 's' && begin->instruction[1] == 's')
+	{	
+		ft_swap_a(stack_a, &instruction_lst_annexe);
+		ft_swap_b(stack_b, &instruction_lst_annexe);
+	}
 	else if (begin->instruction[0] == 'p' && begin->instruction[1] == 'a')
 		ft_push_b_to_a(stack_b, stack_a, &instruction_lst_annexe);
 	else if (begin->instruction[0] == 'p' && begin->instruction[1] == 'b')
