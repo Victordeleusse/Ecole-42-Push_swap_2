@@ -14,7 +14,7 @@ SRCS_ALGO_5_10 = algo_5_10/utils_v10.c algo_5_10/separate_part1.c algo_5_10/sepa
 		algo_5_10/restore_part1.c algo_5_10/restore_part2.c 
 
 SRCS_ALGO_10_100 = algo_10_100/init_weight.c algo_10_100/get_already_sort_list.c \
-		algo_10_100/get_nb_operations.c
+		algo_10_100/get_nb_operations.c algo_10_100/send_elem_b_to_a.c algo_10_100/ordonate.c
 
 SRCS += $(SRCS_UTILS) $(SRCS_LECTURE) $(SRCS_OPERATION) $(SRCS_ALGO_3_5) $(SRCS_ALGO_5_10) $(SRCS_ALGO_10_100)
 

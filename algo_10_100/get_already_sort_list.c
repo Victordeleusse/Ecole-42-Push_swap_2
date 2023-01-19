@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:56:22 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/18 14:32:16 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:54:58 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,6 @@ void	ft_init_already_sort_above(t_stack_list **stack_a)
 	}
 }
 
-int	ft_calculate_mediane(t_stack_list **stack_a)
-{
-	t_stack_list	*begin;
-	int				index_max;
-
-	index_max = (*stack_a)->index_sorted;
-	begin = (*stack_a)->next;
-	while (begin)
-	{
-		if (begin->index_sorted > index_max)
-			index_max = begin->index_sorted;
-		begin = begin->next;
-	}
-	return(index_max / 2);
-}
-
 void	ft_send_from_a_to_b(t_stack_list **stack_a, \
 	t_stack_list **stack_b, t_instruction_list **instruction_list)
 {
@@ -104,7 +88,7 @@ void	ft_send_from_a_to_b(t_stack_list **stack_a, \
 	ft_init_exit_weight(stack_a);
 	ft_init_already_sort_below(stack_a);
 	ft_init_already_sort_above(stack_a);
-	index_mediane = ft_calculate_mediane(stack_a);
+	index_mediane = ft_get_mediane_index(stack_a);
 	begin_a = *stack_a;
 	distance = 0;
 	while (begin_a)

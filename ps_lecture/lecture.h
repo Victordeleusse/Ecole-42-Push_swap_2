@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 09:54:17 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/17 19:53:06 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:03:29 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_stack_list
 	int					bloc;
 	int					exit_weight;
 	int					is_already_sort;
+	int					distance_to_sort;
 	struct s_stack_list	*previous;
 	struct s_stack_list	*next;
 }t_stack_list;
