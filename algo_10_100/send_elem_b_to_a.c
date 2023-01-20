@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:05:53 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/20 11:51:48 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:23:31 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,56 +57,29 @@ int	ft_get_position_in_a(t_stack_list **stack_a, t_stack_list *target)
 	begin_a = *stack_a;
 	last_a = ft_get_last_stack(stack_a);
 	if (target->index_sorted > index_max_a)
-		return (ft_case_max_in_stack(stack_a, target, index_max_a, size_stack_a));
+		return (ft_case_max_in_stack(stack_a, target, index_max_a, \
+			size_stack_a));
 	else if (target->index_sorted < index_min_a)
-		return (ft_case_min_in_stack(stack_a, target, index_min_a, size_stack_a));
+		return (ft_case_min_in_stack(stack_a, target, index_min_a, \
+			size_stack_a));
 	else if (target->index_sorted < begin_a->index_sorted && \
 		target->index_sorted > last_a->index_sorted)
 		return (0);
 	else
-		return(ft_case_standard(stack_a, target));
+		return (ft_case_standard(stack_a, target));
 }
 
 void	ft_send_elem_from_b_to_a(t_stack_list **stack_a, \
 	t_stack_list **stack_b, t_instruction_list **instruction_list)
 {
 	t_stack_list	*elem_opti;
-	int				position_in_b;
 	int				position_in_a;
 	int				size_stack_a;
-	int				size_stack_b;
-	
+
 	elem_opti = ft_get_elem_to_send(stack_b);
 	size_stack_a = ft_get_stack_size(stack_a);
-	size_stack_b = ft_get_stack_size(stack_b);
-	position_in_b = ft_get_position_in_b(stack_b, elem_opti);
 	position_in_a = ft_get_position_in_a(stack_a, elem_opti);
-	if (position_in_b <= size_stack_b / 2)
-	{
-		while ((*stack_b)->index_sorted != elem_opti->index_sorted)
-			ft_rotate_b(stack_b, instruction_list);
-	}
-	else 
-	{
-		while ((*stack_b)->index_sorted != elem_opti->index_sorted)
-			ft_reverse_rotate_b(stack_b, instruction_list);
-	}
-	if (position_in_a <= size_stack_a / 2)
-	{
-		while (position_in_a)
-		{	
-			ft_rotate_a(stack_a, instruction_list);
-			position_in_a--;
-		}
-	}
-	else 
-	{
-		position_in_a = size_stack_a - (position_in_a);
-		while (position_in_a)
-		{
-			ft_reverse_rotate_a(stack_a, instruction_list);
-			position_in_a--;
-		}
-	}
+	ft_prepare_stack_b(stack_b, instruction_list, elem_opti);
+	ft_prepare_stack_a(stack_a, instruction_list, elem_opti);
 	ft_push_b_to_a(stack_b, stack_a, instruction_list);
 }

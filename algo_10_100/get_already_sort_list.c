@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:56:22 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/18 14:54:58 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:28:44 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,13 @@ int	ft_get_biggest_index_below_heaviest(t_stack_list **stack_a)
 	return (max_sorted->index_sorted);
 }
 
-
 void	ft_init_already_sort_above(t_stack_list **stack_a)
 {
 	t_stack_list	*heaviest;
 	t_stack_list	*is_lighter;
 	int				max_index_sorted_above;
 	int				light_weight;
-	
+
 	heaviest = ft_get_heaviest_elem(stack_a);
 	max_index_sorted_above = ft_get_biggest_index_below_heaviest(stack_a);
 	is_lighter = heaviest->previous;
@@ -84,7 +83,7 @@ void	ft_send_from_a_to_b(t_stack_list **stack_a, \
 	int				index_mediane;
 	int				distance;
 	t_stack_list	*begin_a;
-	
+
 	ft_init_exit_weight(stack_a);
 	ft_init_already_sort_below(stack_a);
 	ft_init_already_sort_above(stack_a);

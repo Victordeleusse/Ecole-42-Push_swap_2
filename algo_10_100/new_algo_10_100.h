@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:32:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/20 11:47:38 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:27:12 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ int				ft_case_min_in_stack(t_stack_list **stack_a, t_stack_list *target, \
 			int index_min_a, int size_stack_a);
 int				ft_case_standard(t_stack_list **stack_a, t_stack_list *target);
 
+///////////////////// PREPARE_STACK_BEFORE_PUSH /////////////////
+
+void	ft_prepare_stack_b(t_stack_list **stack_b, t_instruction_list **instruction_list, \
+			t_stack_list *elem_opti);
+void	ft_prepare_stack_a(t_stack_list **stack_a, t_instruction_list **instruction_list, \
+			t_stack_list *elem_opti);
+
 ///////////////////// SEND_B_TO_A /////////////////////////////
 
 t_stack_list	*ft_get_elem_to_send(t_stack_list **stack_b);
@@ -55,6 +62,6 @@ void			ft_send_elem_from_b_to_a(t_stack_list **stack_a, \
 
 ///////////////////// ORDONATE /////////////////////////////
 
-void	ft_finish_to_ordonate(t_stack_list **stack_a, t_stack_list **instruction_list);
+void	ft_finish_to_ordonate(t_stack_list **stack_a, t_instruction_list **instruction_list);
 
 #endif
