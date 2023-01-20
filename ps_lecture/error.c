@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 14:39:47 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/19 20:59:24 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:46:57 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,9 @@
 int	ft_is_int(int number, char *str, int count)
 {
 	if ((str[0] == '-' && number > 0) || (str[0] != '-' && number < 0))
-	{
-		ft_printf("ERROR : %s is not an int !\n", str);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_NOTANINT, 2), 0);
 	if (count == 0)
-	{
-		ft_printf("ERROR : %s is not a number !\n", str);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_WRONGTYPEARGS, 2), 0);
 	return (1);
 }
 
@@ -35,11 +29,7 @@ int	ft_is_already_present(int number, int *tab, int taille)
 	while (j < taille)
 	{
 		if (tab[j] == number)
-		{
-			ft_printf("ERROR : number %d is already present \
-in the list \n", number);
-			return (0);
-		}
+			return (ft_putstr_fd(ERR_DUPLICATEARGS, 2), 0);
 		j++;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:56:22 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/20 12:28:44 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:51:40 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,31 @@ void	ft_init_already_sort_above(t_stack_list **stack_a)
 	}
 }
 
+void	ft_kick_from_a(t_stack_list **stack_a, t_stack_list **stack_b, \
+	t_instruction_list **instruction_list, int distance)
+{
+	int				index_mediane;
+
+	index_mediane = ft_get_mediane_index(stack_a);
+	while (distance)
+	{
+		ft_rotate_a(stack_a, instruction_list);
+		distance--;
+	}
+	ft_push_a_to_b(stack_a, stack_b, instruction_list);
+	if ((*stack_b)->index_sorted > index_mediane)
+		ft_rotate_b(stack_b, instruction_list);
+}
+
 void	ft_send_from_a_to_b(t_stack_list **stack_a, \
 	t_stack_list **stack_b, t_instruction_list **instruction_list)
 {
-	int				index_mediane;
 	int				distance;
 	t_stack_list	*begin_a;
 
 	ft_init_exit_weight(stack_a);
 	ft_init_already_sort_below(stack_a);
 	ft_init_already_sort_above(stack_a);
-	index_mediane = ft_get_mediane_index(stack_a);
 	begin_a = *stack_a;
 	distance = 0;
 	while (begin_a)
@@ -99,14 +113,7 @@ void	ft_send_from_a_to_b(t_stack_list **stack_a, \
 		}
 		else
 		{
-			while (distance)
-			{
-				ft_rotate_a(stack_a, instruction_list);
-				distance--;
-			}
-			ft_push_a_to_b(stack_a, stack_b, instruction_list);
-			if ((*stack_b)->index_sorted > index_mediane)
-				ft_rotate_b(stack_b, instruction_list);
+			ft_kick_from_a(stack_a, stack_b, instruction_list, distance);
 			begin_a = *stack_a;
 			distance = 0;
 		}

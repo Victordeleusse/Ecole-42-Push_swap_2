@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:15:27 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/20 10:40:50 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:50:12 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ int	main(int argc, char **argv)
 
 	tab = ft_generate_tab_int(argc, argv);
 	if (tab == NULL)
-		return (0);
+		return (ft_putstr_fd(ERR_MEMORY_ALLOC, 2), 0);
 	stack_a = ft_generate_full_stack(tab, argc);
 	stack_b = ft_generate_empty_stack(argc);
 	if (!stack_a || !stack_b)
-		return (0);
+		return (ft_putstr_fd(ERR_MEMORY_ALLOC, 2), 0);
 	ft_get_index_sorted(stack_a, tab, argc);
 	instruction_list = ft_generate_instruction_element("1");
 	if (!instruction_list)
-		return (0);
+		return (ft_putstr_fd(ERR_MEMORY_ALLOC, 2), 0);
 	ft_operation(stack_a, stack_b, instruction_list, argc);
 	ft_opti_display(instruction_list);
 	ft_free(stack_a, stack_b, instruction_list, tab);

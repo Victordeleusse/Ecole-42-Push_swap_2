@@ -6,12 +6,16 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 09:54:17 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/18 16:03:29 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:50:27 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LECTURE_H
 # define LECTURE_H
+
+# define ERR_NOTANINT "Error\n"
+# define ERR_WRONGTYPEARGS "Error\n"
+# define ERR_DUPLICATEARGS "Error\n"
 
 typedef struct s_stack_list
 {

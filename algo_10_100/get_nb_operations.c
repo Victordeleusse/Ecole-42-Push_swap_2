@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:12:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/19 19:37:14 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:15:24 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,87 +31,47 @@ int	ft_distance_to_get_on_top_of_b(t_stack_list **stack_b, t_stack_list *target)
 	}
 	if (distance > (size_stack_b / 2))
 		return (size_stack_b - distance);
-	return (distance);	
+	return (distance);
 }
 
-int	ft_distance_to_put_in_a_from_top_b(t_stack_list **stack_a, t_stack_list *target)
+int	ft_distance_to_put_in_a_from_top_b(t_stack_list **stack_a, \
+	t_stack_list *target)
 {
 	t_stack_list	*begin_a;
 	t_stack_list	*last_a;
 	int				index_max_a;
 	int				index_min_a;
-	int				distance;
 	int				size_stack_a;
 
 	index_max_a = ft_get_index_max(stack_a);
 	index_min_a = ft_get_index_min(stack_a);
-	distance = 0;
 	size_stack_a = ft_get_stack_size(stack_a);
 	begin_a = *stack_a;
 	last_a = ft_get_last_stack(stack_a);
 	if (target->index_sorted > index_max_a)
-	{
-		while (begin_a && begin_a->index_sorted != index_max_a)
-		{
-			begin_a = begin_a->next;
-			distance++;
-		}
-		if (distance == size_stack_a)
-			return (0);
-		else if (distance <= size_stack_a / 2)
-			return (distance);
-		else
-			return (size_stack_a - distance);
-	}
+		return (ft_case_max_in_a(stack_a, target, index_max_a));
 	else if (target->index_sorted < index_min_a)
-	{
-		while (begin_a && begin_a->index_sorted != index_min_a)
-		{
-			begin_a = begin_a->next;
-			distance++;
-		}
-		if (distance == size_stack_a)
-			return (0);
-		else if (distance <= size_stack_a / 2)
-			return (distance);
-		else
-			return (size_stack_a - distance);
-	}
-	else if (target->index_sorted < begin_a->index_sorted && target->index_sorted > last_a->index_sorted)
+		return (ft_case_min_in_a(stack_a, target, index_min_a));
+	else if (target->index_sorted < begin_a->index_sorted && \
+			target->index_sorted > last_a->index_sorted)
 		return (0);
 	else
-	{
-		distance = 1;
-		while (begin_a->next)
-		{	
-			if (begin_a->index_sorted < target->index_sorted \
-				&& begin_a->next->index_sorted > target->index_sorted)
-			{
-				if (distance <= size_stack_a / 2)
-					return (distance);
-				else
-					return (size_stack_a - distance);
-			}	
-			begin_a = begin_a->next;
-			distance++;
-		}	
-	}
+		return (ft_case_regular_in_a(stack_a, target));
 }
 
-void	ft_calculate_distance_to_sort(t_stack_list **stack_a, t_stack_list **stack_b)
+void	ft_calculate_distance_to_sort(t_stack_list **stack_a, \
+	t_stack_list **stack_b)
 {
 	t_stack_list	*begin_b;
-	int				distance_to_get_on_top_b;
-	int				distance_to_put_in_a;
+	int				distance_top_b;
+	int				distance_in_a;
 
 	begin_b = *stack_b;
 	while (begin_b)
 	{
-		distance_to_get_on_top_b = ft_distance_to_get_on_top_of_b(stack_b, begin_b);
-		distance_to_put_in_a = ft_distance_to_put_in_a_from_top_b(stack_a, begin_b);
-		begin_b->distance_to_sort = distance_to_get_on_top_b + distance_to_put_in_a;
-		// if (begin_b->index_sorted == 99)
-		// 	printf("Indice : %d | distance top B : %d | distance to sort in A : %d\n", begin_b->index_sorted, distance_to_get_on_top_b, distance_to_put_in_a);
+		distance_top_b = ft_distance_to_get_on_top_of_b(stack_b, begin_b);
+		distance_in_a = ft_distance_to_put_in_a_from_top_b(stack_a, begin_b);
+		begin_b->distance_to_sort = distance_top_b + distance_in_a;
 		begin_b = begin_b->next;
 	}
 }

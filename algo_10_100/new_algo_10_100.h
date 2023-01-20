@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:32:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/20 12:27:12 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:17:41 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,19 @@ t_stack_list	*ft_get_heaviest_elem(t_stack_list **stack_a);
 void			ft_init_already_sort_below(t_stack_list **stack_a);
 int				ft_get_biggest_index_below_heaviest(t_stack_list **stack_a);
 void			ft_init_already_sort_above(t_stack_list **stack_a);
+void			ft_kick_from_a(t_stack_list **stack_a, t_stack_list **stack_b, \
+		t_instruction_list **instruction_list, int distance);
 void			ft_send_from_a_to_b(t_stack_list **stack_a, \
 		t_stack_list **stack_b, t_instruction_list **instruction_list);
+
+///////////////////// GET_NB_OPERATIONS_UTILS //////////////////////
+
+int				ft_case_max_in_a(t_stack_list **stack_a, t_stack_list *target, \
+		int index_max_a);
+int				ft_case_min_in_a(t_stack_list **stack_a, t_stack_list *target, \
+		int index_min_a);
+int				ft_case_regular_in_a(t_stack_list **stack_a, \
+		t_stack_list *target);
 
 ///////////////////// GET_NB_OPERATIONS //////////////////////
 
@@ -39,29 +50,32 @@ void			ft_calculate_distance_to_sort(t_stack_list **stack_a, \
 
 ///////////////////// GET_POS_IN_A_UTILS ///////////////////////
 
-int				ft_case_max_in_stack(t_stack_list **stack_a, t_stack_list *target, \
-			int index_max_a, int size_stack_a);
-int				ft_case_min_in_stack(t_stack_list **stack_a, t_stack_list *target, \
-			int index_min_a, int size_stack_a);
+int				ft_case_max_in_stack(t_stack_list **stack_a, \
+		t_stack_list *target, int index_max_a, int size_stack_a);
+int				ft_case_min_in_stack(t_stack_list **stack_a, \
+		t_stack_list *target, int index_min_a, int size_stack_a);
 int				ft_case_standard(t_stack_list **stack_a, t_stack_list *target);
 
 ///////////////////// PREPARE_STACK_BEFORE_PUSH /////////////////
 
-void	ft_prepare_stack_b(t_stack_list **stack_b, t_instruction_list **instruction_list, \
-			t_stack_list *elem_opti);
-void	ft_prepare_stack_a(t_stack_list **stack_a, t_instruction_list **instruction_list, \
-			t_stack_list *elem_opti);
+void			ft_prepare_stack_b(t_stack_list **stack_b, \
+		t_instruction_list **instruction_list, t_stack_list *elem_opti);
+void			ft_prepare_stack_a(t_stack_list **stack_a, \
+		t_instruction_list **instruction_list, t_stack_list *elem_opti);
 
 ///////////////////// SEND_B_TO_A /////////////////////////////
 
 t_stack_list	*ft_get_elem_to_send(t_stack_list **stack_b);
-int				ft_get_position_in_b(t_stack_list **stack_b, t_stack_list *elem);
-int				ft_get_position_in_a(t_stack_list **stack_a, t_stack_list *target);
+int				ft_get_position_in_b(t_stack_list **stack_b, \
+		t_stack_list *elem);
+int				ft_get_position_in_a(t_stack_list **stack_a, \
+		t_stack_list *target);
 void			ft_send_elem_from_b_to_a(t_stack_list **stack_a, \
 			t_stack_list **stack_b, t_instruction_list **instruction_list);
 
 ///////////////////// ORDONATE /////////////////////////////
 
-void	ft_finish_to_ordonate(t_stack_list **stack_a, t_instruction_list **instruction_list);
+void			ft_finish_to_ordonate(t_stack_list **stack_a, \
+		t_instruction_list **instruction_list);
 
 #endif
