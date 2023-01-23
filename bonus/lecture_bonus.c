@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:22:59 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/16 15:04:52 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:19:18 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ char	*ft_give_instruction(char a, char b, char c)
 	return (instruction);
 }
 
-char	**ft_generate_instruction_tab(void)
+char	**ft_generate_instruction_tab(char **order, int fd)
 {
 	char	**instruction_tab;
 
 	instruction_tab = ft_calloc(sizeof(char *), 12);
 	if (!instruction_tab)
+		return (NULL);
+	*order = get_next_line(fd);
+	if (*order == NULL)
 		return (NULL);
 	instruction_tab[0] = ft_give_instruction('r', 'a', '\0');
 	instruction_tab[1] = ft_give_instruction('r', 'b', '\0');
@@ -86,6 +89,7 @@ t_instruction_list	*ft_generate_instruction_bloc(char **instruction_tab, \
 	}
 	instruction_bloc->instruction[len_order - 1] = '\0';
 	instruction_bloc->next = 0;
+	free(order);
 	return (instruction_bloc);
 }
 
@@ -97,12 +101,12 @@ t_instruction_list	*ft_generate_instruction_list(int fd)
 	char				*order;
 	char				**instruction_tab;
 
-	instruction_tab = ft_generate_instruction_tab();
-	order = get_next_line(fd);
-	instruction_lst = ft_generate_instruction_bloc(instruction_tab, order);
-	if (!instruction_tab || !instruction_lst || order == NULL)
+	instruction_tab = ft_generate_instruction_tab(&order, fd);
+	if (!instruction_tab || order == NULL)
 		return (NULL);
-	free (order);
+	instruction_lst = ft_generate_instruction_bloc(instruction_tab, order);
+	if (!instruction_lst)
+		return (NULL);
 	begin = instruction_lst;
 	while (1)
 	{
@@ -110,7 +114,6 @@ t_instruction_list	*ft_generate_instruction_list(int fd)
 		if (order == NULL)
 			break ;
 		next_bloc = ft_generate_instruction_bloc(instruction_tab, order);
-		free (order);
 		begin->next = next_bloc;
 		begin = next_bloc;
 	}

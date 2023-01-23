@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:24:59 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/16 13:40:33 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:12:32 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 ////////////////////// LECTURE_BONUS.C //////////////////////
 
-char				**ft_generate_instruction_tab(void);
+char				**ft_generate_instruction_tab(char **order, int fd);
 int					ft_order_is_available(char **instruction_tab, char *order);
 t_instruction_list	*ft_generate_instruction_bloc(char **instruction_tab, \
 				char *order);
