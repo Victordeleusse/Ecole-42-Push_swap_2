@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:56:22 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/20 16:51:40 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/23 10:20:15 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_kick_from_a(t_stack_list **stack_a, t_stack_list **stack_b, \
 		distance--;
 	}
 	ft_push_a_to_b(stack_a, stack_b, instruction_list);
-	if ((*stack_b)->index_sorted > index_mediane)
+	if ((*stack_b)->index_sorted > index_mediane && (*stack_b)->next)
 		ft_rotate_b(stack_b, instruction_list);
 }
 
