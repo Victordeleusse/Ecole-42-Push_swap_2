@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:32:33 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/24 11:55:42 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:37:03 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	*ft_generate_tab_int(int argc, char **argv)
 {
-	int	i;
-	int	number;
-	int	*tab;
-	int	count;
+	int		i;
+	long	number;
+	int		*tab;
+	int		count;
 
-	if (argc == 2)
+	if (argc == 1)
 		return (NULL);
 	i = 0;
 	tab = ft_calloc(sizeof(int), argc -1);
@@ -27,7 +27,8 @@ int	*ft_generate_tab_int(int argc, char **argv)
 	{
 		count = 0;
 		number = ft_atoi(argv[i + 1], &count);
-		if (ft_is_int(number, argv[i + 1], count) == 0 || \
+		if (number == 3147483647 || \
+			ft_is_int(number, argv[i + 1], count) == 0 || \
 			ft_is_already_present(number, tab, i) == 0)
 		{	
 			free (tab);
@@ -65,8 +66,10 @@ t_stack_list	**ft_generate_full_stack(int *tab, int argc)
 	i = 2;
 	stack = ft_calloc(sizeof(t_stack_list *), argc - 1);
 	before = ft_generate_stack_element(tab[0]);
-	element = ft_generate_stack_element(tab[1]);
 	*stack = before;
+	if (argc == 2)
+		return (stack);
+	element = ft_generate_stack_element(tab[1]);
 	before->next = element;
 	element->previous = before;
 	while (i < argc - 1)

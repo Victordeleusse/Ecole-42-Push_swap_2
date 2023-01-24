@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 10:20:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/10 11:07:22 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 17:25:39 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ void	ft_rotate_a(t_stack_list **stack_a, \
 	t_stack_list	*extract;
 	char			*instruction;
 
+	if (!*stack_a || (*stack_a)->next == NULL || \
+		(*stack_a)->index_sorted == 0 || (*stack_a)->next->index_sorted == 0)
+		return ;
 	instruction = ft_calloc(sizeof(char), 3);
 	if (!instruction)
-		return ;
-	if (!*stack_a || (*stack_a)->next == NULL)
 		return ;
 	extract = ft_pop_first(stack_a);
 	ft_add_last(stack_a, extract);
@@ -40,10 +41,11 @@ void	ft_rotate_b(t_stack_list **stack_b, \
 	t_stack_list	*extract;
 	char			*instruction;
 
+	if (!*stack_b || (*stack_b)->next == NULL || \
+		(*stack_b)->index_sorted == 0 || (*stack_b)->next->index_sorted == 0)
+		return ;
 	instruction = ft_calloc(sizeof(char), 3);
 	if (!instruction)
-		return ;
-	if (!*stack_b || (*stack_b)->next == NULL)
 		return ;
 	extract = ft_pop_first(stack_b);
 	ft_add_last(stack_b, extract);
@@ -67,10 +69,11 @@ void	ft_reverse_rotate_a(t_stack_list **stack_a, \
 	t_stack_list	*extract;
 	char			*instruction;
 
+	if (!*stack_a || !(*stack_a)->next || \
+		(*stack_a)->index_sorted == 0 || (*stack_a)->next->index_sorted == 0)
+		return ;
 	instruction = ft_calloc(sizeof(char), 4);
 	if (!instruction)
-		return ;
-	if (!*stack_a || !(*stack_a)->next)
 		return ;
 	extract = ft_pop_last(stack_a);
 	ft_add_first(stack_a, extract);
@@ -86,10 +89,11 @@ void	ft_reverse_rotate_b(t_stack_list **stack_b, \
 	t_stack_list	*extract;
 	char			*instruction;
 
+	if (!*stack_b || !(*stack_b)->next || \
+		(*stack_b)->index_sorted == 0 || (*stack_b)->next->index_sorted == 0)
+		return ;
 	instruction = ft_calloc(sizeof(char), 4);
 	if (!instruction)
-		return ;
-	if (!*stack_b || !(*stack_b)->next)
 		return ;
 	extract = ft_pop_last(stack_b);
 	ft_add_first(stack_b, extract);

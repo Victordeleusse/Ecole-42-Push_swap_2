@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 18:58:19 by vde-leus          #+#    #+#             */
-/*   Updated: 2022/12/23 11:49:45 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:25:59 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char		*ft_strrchr(const char *str, int c);
 char		*ft_strnstr(const char	*big, const char *little, size_t n);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
-int			ft_atoi(const char *str, int *count);
+long		ft_atoi(const char *str, int *count);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);

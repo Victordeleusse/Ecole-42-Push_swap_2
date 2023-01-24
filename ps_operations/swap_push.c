@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 09:53:56 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/10 11:08:19 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 17:24:59 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	ft_swap_a(t_stack_list **stack, \
 	t_stack_list	*second;
 	char			*instruction;
 
-	instruction = ft_calloc(sizeof(char), 3);
-	if (!instruction)
-		return ;
-	if (!*stack)
+	if (!*stack || (*stack)->index_sorted == 0)
 		return ;
 	first = *stack;
-	if (!(*stack)->next)
+	if (!(*stack)->next || (*stack)->next->index_sorted == 0)
+		return ;
+	instruction = ft_calloc(sizeof(char), 3);
+	if (!instruction)
 		return ;
 	second = first->next;
 	first->next = second->next;
@@ -49,13 +49,13 @@ void	ft_swap_b(t_stack_list **stack, \
 	t_stack_list	*second;
 	char			*instruction;
 
-	instruction = ft_calloc(sizeof(char), 3);
-	if (!instruction)
-		return ;
-	if (!*stack)
+	if (!*stack || (*stack)->index_sorted == 0)
 		return ;
 	first = *stack;
-	if (!(*stack)->next)
+	if (!(*stack)->next || (*stack)->next->index_sorted == 0)
+		return ;
+	instruction = ft_calloc(sizeof(char), 3);
+	if (!instruction)
 		return ;
 	second = first->next;
 	first->next = second->next;
@@ -83,10 +83,10 @@ void	ft_push_a_to_b(t_stack_list **stack_a, t_stack_list **stack_b, \
 	t_stack_list	*elem_top;
 	char			*instruction;
 
+	if (!*stack_a || (*stack_a)->index_sorted == 0)
+		return ;
 	instruction = ft_calloc(sizeof(char), 3);
 	if (!instruction)
-		return ;
-	if (!*stack_a)
 		return ;
 	elem_top = ft_pop_first(stack_a);
 	ft_add_first(stack_b, elem_top);
@@ -101,10 +101,10 @@ void	ft_push_b_to_a(t_stack_list **stack_b, t_stack_list **stack_a, \
 	t_stack_list	*elem_top;
 	char			*instruction;
 
+	if (!*stack_b || (*stack_b)->index_sorted == 0)
+		return ;
 	instruction = ft_calloc(sizeof(char), 3);
 	if (!instruction)
-		return ;
-	if (!*stack_b)
 		return ;
 	elem_top = ft_pop_first(stack_b);
 	ft_add_first(stack_a, elem_top);

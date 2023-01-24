@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:15:27 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/23 11:04:54 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:54:52 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ int	main(int argc, char **argv)
 	t_stack_list		**stack_b;
 	t_instruction_list	*instruction_list;
 
+	if (argc == 1)
+		return (0);
 	tab = ft_generate_tab_int(argc, argv);
 	if (tab == NULL)
-		return (0);
+		return (ft_putstr_fd(ERR_MEMORY_ALLOC, 2), 0);
 	stack_a = ft_generate_full_stack(tab, argc);
 	stack_b = ft_generate_empty_stack(argc);
 	if (!stack_a || !stack_b)

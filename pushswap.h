@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:28:19 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/23 11:00:03 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:30:51 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include "bonus/bonus.h"
 # include "utils_0_3/utils_0_3.h"
 
-# define ERR_MEMORY_ALLOC "Error Mem\n"
-# define ERR_MEMORY_ALLOC_1 "Error Mem1\n"
+# define ERR_MEMORY_ALLOC "Error\n"
+# define ERR_MEMORY_ALLOC_1 "Error\n"
 
 void			ft_opti_display(t_instruction_list *instruction_list);
 void			ft_free(t_stack_list **stack_a, t_stack_list **stack_b, \

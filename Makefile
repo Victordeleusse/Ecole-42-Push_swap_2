@@ -20,7 +20,8 @@ SRCS_ALGO_10_100 = algo_10_100/init_weight.c algo_10_100/get_already_sort_list.c
 
 SRCS += $(SRCS_UTILS) $(SRCS_LECTURE) $(SRCS_OPERATION) $(SRCS_ALGO_3_5) $(SRCS_ALGO_5_10) $(SRCS_ALGO_10_100)
 
-SRCS_BONUS = bonus/main_bonus.c bonus/lecture_bonus.c bonus/free_bonus.c
+SRCS_BONUS = bonus/main_bonus.c bonus/lecture_bonus.c bonus/free_bonus.c bonus/operations_bonus.c \
+		bonus/main_utils.c bonus/check_instructions.c
 
 SRCS_BONUS += $(SRCS_UTILS) $(SRCS_LECTURE) $(SRCS_OPERATION) $(SRCS_ALGO_3_5) $(SRCS_ALGO_5_10) $(SRCS_ALGO_10_100)
  
