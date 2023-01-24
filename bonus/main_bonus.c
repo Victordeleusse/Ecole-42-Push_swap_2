@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:09:41 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/20 10:46:39 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:14:46 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	ft_check_checker(t_stack_list **stack_a, int argc)
 
 	begin_a = *stack_a;
 	count = 0;
+	if (argc == 2)
+		return (1);
 	if (begin_a->index_sorted != 1)
 		return (0);
 	while (begin_a->next)
@@ -114,6 +116,23 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	instruction_lst = ft_generate_instruction_list(0);
+	if (!instruction_lst && ft_check_error(argc, argv) == 1)
+	{	
+		tab = ft_generate_tab_int(argc, argv);
+		if (argc == 2)
+		{	
+			ft_printf("OK\n");
+			return (0);
+		}
+		stack_a = ft_generate_full_stack(tab, argc);
+		ft_get_index_sorted(stack_a, tab, argc);
+		printf("indice : %d\n", (*stack_a)->index_sorted);
+		if (ft_check_checker(stack_a, argc) == 0)
+			ft_printf("KO\n");
+		else 	
+			ft_printf("OK\n");
+		return (0);
+	}
 	tab = ft_generate_tab_int(argc, argv);
 	if (!instruction_lst || !tab)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:32:33 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/23 13:13:27 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:55:42 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	*ft_generate_tab_int(int argc, char **argv)
 	int	*tab;
 	int	count;
 
+	if (argc == 2)
+		return (NULL);
 	i = 0;
 	tab = ft_calloc(sizeof(int), argc -1);
 	while (i < argc - 1)

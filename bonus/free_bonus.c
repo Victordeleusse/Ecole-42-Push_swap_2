@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:21:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/16 13:40:04 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:11:41 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,22 @@ void	ft_free_bonus(t_stack_list **stack_a, t_stack_list **stack_b, \
 	ft_free_stack(stack_a);
 	ft_free_stack(stack_b);
 	free(tab);
+}
+
+int	ft_check_error(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if ('0' <= argv[i][0] && argv[i][0] <= '9')
+			i++;
+		else if ((argv[i][0] == '+' || argv[i][0] == '-') \
+				&& '0' <= argv[i][1] && argv[i][1] <= '9')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }

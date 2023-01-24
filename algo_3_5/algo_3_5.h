@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:48:50 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/11 14:49:51 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:03:42 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void			ft_prepare_stack_3_bis(t_stack_list **stack1, \
 					t_instruction_list **instruction_list);
 void			ft_prepare_stack_2(t_stack_list **stack2, \
 					t_instruction_list **instruction_list);
+void			ft_size_mini(t_stack_list **stack_a, \
+					t_instruction_list **instruction_list, \
+					int size_stack1);
 void			ft_sort_5(t_stack_list **stack1, t_stack_list **stack2, \
 					t_instruction_list **instruction_list);
 
