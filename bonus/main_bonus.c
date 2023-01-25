@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:09:41 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/24 20:08:35 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:51:09 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ int	main(int argc, char **argv)
 	stack_a = ft_generate_full_stack(tab, argc);
 	stack_b = ft_generate_empty_stack(argc);
 	if (!instruction_lst && ft_check_error(argc, argv) == 1)
+	{	
+		free(tab);
 		return (ft_bloc_1(stack_a, stack_b, argc, argv), 0);
-	if (!instruction_lst)
-		return (0);
-	if (ft_check_instructions(instruction_lst) == 0 || !stack_a || !stack_b)
+	}
+	if (!instruction_lst || ft_check_instructions(instruction_lst) == 0)
 		return (ft_free_bonus(stack_a, stack_b, instruction_lst, tab), 0);
 	ft_get_index_sorted(stack_a, tab, argc);
 	ft_operation_bonus_rotate(&instruction_lst, stack_a, stack_b);

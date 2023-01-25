@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:10:32 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/01/24 20:10:36 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:20:01 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_generate_instruction_tab(char **order, int fd)
 		return (NULL);
 	*order = get_next_line(fd);
 	if (*order == NULL)
-		return (NULL);
+		return (ft_free_instruction_tab(instruction_tab), NULL);
 	instruction_tab[0] = ft_give_instruction('r', 'a', '\0');
 	instruction_tab[1] = ft_give_instruction('r', 'b', '\0');
 	instruction_tab[2] = ft_give_instruction('r', 'r', '\0');
